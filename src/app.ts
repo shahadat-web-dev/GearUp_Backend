@@ -3,6 +3,7 @@ import cors from "cors";
 import express, { Application, Request, Response } from "express";
 import config from "./config";
 
+
 const app: Application = express();
 
 app.use(
@@ -12,13 +13,19 @@ app.use(
   }),
 );
 
+
+// Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
-
 app.get("/", (req: Request, res:Response) => {
    res.send("Hello , world!");
 });
+
+
+// ALL Routes
+app.use("/api/auth", );
+
 
 export default app;

@@ -1,0 +1,28 @@
+model Item {
+  id          String   @id @default(uuid())
+  name        String
+  description String
+  brand       String
+  images      String[]
+
+  pricePerDay    Decimal  @default(0)
+  stock          Int      @default(0)
+  isAvailable    Boolean  @default(true)
+  avgRating      Decimal?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  providerId String
+  provider   User   @relation(fields: [providerId], references: [id])
+
+  categoryId String
+  category   Category @relation(fields: [categoryId], references: [id])
+
+  orderItems OrderItem[]
+  reviews    Review[]
+
+  @@index([providerId])
+  @@index([categoryId])
+  @@map("items")
+}
