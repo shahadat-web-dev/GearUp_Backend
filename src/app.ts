@@ -11,6 +11,8 @@ import { paymentRouter } from "./modules/payment/payment.route";
 import { stripeWebhook } from "./modules/payment/payment.controller";
 import { reviewRouter } from "./modules/review/review.route";
 import { adminRouter } from "./modules/admin/admin.route";
+import { notFound } from "./middleware/notFound";
+import { globalErrorHandler } from "./middleware/globalErrorHandler";
 
 
 const app: Application = express();
@@ -51,5 +53,9 @@ app.use("/api/payments", paymentRouter);
 app.use("/api/reviews", reviewRouter);
 app.use("/api/admin", adminRouter);
 
+
+app.use(notFound);
+
+app.use(globalErrorHandler);
 
 export default app;
