@@ -6,6 +6,7 @@ import { authRouter } from "./modules/auth/auth.route";
 import { categoryRouter } from "./modules/category/category.route";
 import { gearRouter } from "./modules/gear/gear.route";
 import { rentalRouter } from "./modules/rental/rental.route";
+import { providerRouter } from "./modules/provider/provider.route";
 
 
 const app: Application = express();
@@ -33,6 +34,7 @@ app.use("/api/auth", authRouter);
 app.use("/api/categories", categoryRouter);
 app.use("/api/gear", gearRouter);
 app.use("/api/rentals", rentalRouter);
+app.use("/api/provider", providerRouter);
 
 
 export default app;
