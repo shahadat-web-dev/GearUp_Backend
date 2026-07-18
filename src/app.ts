@@ -7,6 +7,8 @@ import { categoryRouter } from "./modules/category/category.route";
 import { gearRouter } from "./modules/gear/gear.route";
 import { rentalRouter } from "./modules/rental/rental.route";
 import { providerRouter } from "./modules/provider/provider.route";
+import { paymentRouter } from "./modules/payment/payment.route";
+import { stripeWebhook } from "./modules/payment/payment.controller";
 
 
 const app: Application = express();
@@ -16,6 +18,14 @@ app.use(
     origin: config.APP_URL,
     credentials: true,
   }),
+);
+
+
+// stripe webhook needs raw body, must stay before express.json()
+app.post(
+  "/api/payments/webhook",
+  express.raw({ type: "application/json" }),
+  stripeWebhook,
 );
 
 
@@ -35,6 +45,7 @@ app.use("/api/categories", categoryRouter);
 app.use("/api/gear", gearRouter);
 app.use("/api/rentals", rentalRouter);
 app.use("/api/provider", providerRouter);
+app.use("/api/payments", paymentRouter);
 
 
 export default app;
