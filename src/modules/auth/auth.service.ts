@@ -18,7 +18,7 @@ const regUserDb = async (payload: IRegisterUser) => {
       password: hashPassword,
       name,
       phone,
-      role: role === "PROVIDER" ? Role.PROVIDER : Role.CUSTOMER,
+      role,
     },
   });
 

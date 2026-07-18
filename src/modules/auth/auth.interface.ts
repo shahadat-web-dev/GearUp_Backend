@@ -3,7 +3,7 @@ export interface IRegisterUser {
   email: string;
   password: string;
   phone?: string;
-  role?: "CUSTOMER" | "PROVIDER";
+  role: "ADMIN"| "CUSTOMER" | "PROVIDER";
 }
 
 export interface ILogin {

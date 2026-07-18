@@ -4,7 +4,7 @@ model User {
   email    String @unique @db.VarChar(255)
   password String
   phone    String?
-  role     Role   @default(CUSTOMER)
+  role     Role  
   status   Status @default(ACTIVE)
 
   createdAt DateTime @default(now())
