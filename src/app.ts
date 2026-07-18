@@ -4,6 +4,7 @@ import express, { Application, Request, Response } from "express";
 import config from "./config";
 import { authRouter } from "./modules/auth/auth.route";
 import { categoryRouter } from "./modules/category/category.route";
+import { gearRouter } from "./modules/gear/gear.route";
 
 
 const app: Application = express();
@@ -29,6 +30,7 @@ app.get("/", (req: Request, res:Response) => {
 // ALL Routes
 app.use("/api/auth", authRouter);
 app.use("/api/categories", categoryRouter);
+app.use("/api/gear", gearRouter);
 
 
 export default app;
